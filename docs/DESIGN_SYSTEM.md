@@ -1,25 +1,29 @@
 # Design System
 
-**Status:** Initial  
-**Version:** 1.0
+## 1. Design Direction
 
----
+### Concept
 
-## 1. Purpose
+**"Gallery at Home"**
 
-This document defines the visual rules for the artist portfolio.
+The website combines intimate studio warmth with the quality and restraint of a contemporary art gallery.
 
 The design should feel:
 
 - Artistic
 - Elegant
+- Warm
 - Personal
-- Modern
+- Sophisticated
 - Calm
-- Premium
-- Minimal without feeling empty
+- Contemporary
+- Handmade
+- Editorial
+- Gallery-like
 
-The design must prioritize the artwork itself.
+The artwork must always remain the primary visual focus. UI elements should be minimal and recede into the background.
+
+The website should feel like an artist's personal gallery rather than a generic portfolio template or traditional e-commerce store.
 
 ---
 
@@ -27,720 +31,1383 @@ The design must prioritize the artwork itself.
 
 ### Artwork First
 
-The artwork is the primary visual element.
+Artwork is the most important element on every page.
 
-UI elements should support the artwork rather than compete with it.
+Avoid UI treatments that compete with artwork:
 
-### Minimal but Not Generic
+- Excessive decorations
+- Large colorful UI elements
+- Heavy shadows
+- Unnecessary gradients
+- Excessive animations
+- Overly complex layouts
 
-Avoid unnecessary decoration.
+### Generous Whitespace
 
-The website should still have enough visual personality to feel like an artist's personal space rather than a generic portfolio template.
+Artwork should have enough surrounding space to breathe.
 
-### Consistency
+Use generous:
 
-Repeated elements should use consistent:
+- Section padding
+- Grid gaps
+- Margins
+- Line spacing
 
-- Spacing
-- Typography
-- Borders
-- Radius
-- Buttons
-- Cards
-- States
+### Sharp and Intentional
 
-### Intentional Whitespace
+The visual language uses sharp edges rather than modern SaaS-style rounded cards.
 
-Whitespace should be used deliberately to give artwork and content room to breathe.
+Border radius should generally be:
 
-### Responsive by Default
+- `0px` for buttons, tags, images
+- `2px` for cards
 
-Every component must work across:
+### Quiet Interaction
 
-- Mobile
-- Tablet
-- Desktop
-- Large screens
+Interactions should be subtle and refined.
 
----
-
-## 3. Color System
-
-The final colors will be selected during visual design implementation.
-
-The system should support semantic color roles rather than scattering arbitrary colors throughout components.
-
-Conceptual roles:
-
-```text
-Background
-Foreground
-Muted
-Border
-Primary
-Primary Foreground
-Secondary
-Secondary Foreground
-Accent
-Accent Foreground
-Destructive
-Success
-Warning
-```
-
-Example semantic usage:
-
-```text
-background
-foreground
-muted
-border
-primary
-accent
-destructive
-```
-
-Components should use semantic design tokens where possible.
+Animations should communicate interaction without becoming distracting.
 
 ---
 
-## 4. Color Direction
+# 3. Color System
 
-The initial visual direction should explore:
+## Primary Colors
 
-- Warm neutral backgrounds
-- Dark charcoal text
-- Subtle earthy tones
-- Soft accent colors inspired by clay and traditional materials
+| Token         | Hex       | Usage                                    |
+| ------------- | --------- | ---------------------------------------- |
+| Charcoal Ink  | `#1a1a1a` | Primary text, strong borders, navigation |
+| Warm Ivory    | `#faf8f5` | Main page background                     |
+| Terracotta    | `#c4705a` | Primary accent, CTAs, active states      |
+| Sage          | `#8a9a7b` | Secondary accent, availability states    |
+| Clay          | `#d4a574` | Tertiary accent, warm highlights         |
+| Stone         | `#e8e4df` | Borders, dividers, subtle backgrounds    |
+| Deep Charcoal | `#2d2d2d` | Footer and dark sections                 |
+| Muted         | `#b8b0a8` | Captions and secondary metadata          |
 
-Possible visual references:
+## Semantic Colors
+
+### Backgrounds
 
 ```text
-Paper
-Clay
-Ink
-Stone
-Wood
-Natural pigments
+background-primary: #faf8f5
+background-secondary: #f5f1ec
+background-surface: #ffffff
+background-dark: #2d2d2d
 ```
 
-The exact palette must be chosen after testing it against real artwork images.
+### Text
+
+```text
+text-primary: #1a1a1a
+text-secondary: #2d2d2d
+text-muted: #b8b0a8
+text-inverse: #faf8f5
+```
+
+### Accents
+
+```text
+accent-primary: #c4705a
+accent-primary-hover: #a85d48
+
+accent-secondary: #8a9a7b
+accent-tertiary: #d4a574
+```
+
+### Borders
+
+```text
+border-default: #e8e4df
+border-strong: #1a1a1a
+```
 
 ---
 
-## 5. Typography
+# 4. Typography
 
-Typography should combine personality with readability.
+## Font Families
 
-The system should generally use:
+### Display / Headings
 
-### Display Font
+**Cormorant Garamond**
 
 Used for:
+
+- Page titles
 
 - Hero headings
-- Major section titles
-- Artist name
-- Important visual statements
 
-### Body Font
+- Section headings
+
+- Artwork titles
+
+- Large editorial text
+
+- Mobile navigation links
+
+### Body / UI
+
+**Inter**
 
 Used for:
 
-- Descriptions
+- Body text
+
 - Navigation
+
 - Buttons
+
+- Labels
+
 - Metadata
-- Forms
 
-### Rules
+- Tags
 
-Avoid using too many font families.
+- Form fields
 
-Maximum recommended:
+## Typography Hierarchy
+
+### H1
 
 ```text
-1 display family
-1 body family
+Font: Cormorant Garamond
+Size: 64px
+Weight: 300
+Line-height: 1.05
 ```
 
-Typography must remain readable on mobile.
+Mobile:
+
+```text
+Size: 40px
+```
+
+### H2
+
+```text
+Font: Cormorant Garamond
+Size: 48px
+Weight: 400
+Line-height: 1.1
+```
+
+Mobile:
+
+```text
+Size: 32px
+```
+
+### H3
+
+```text
+Font: Cormorant Garamond
+Size: 32px
+Weight: 400
+Line-height: 1.2
+```
+
+### Body
+
+```text
+Font: Inter
+Size: 16px
+Weight: 400
+Line-height: 1.7
+```
+
+### Small Text
+
+```text
+Font: Inter
+Size: 14px
+Weight: 400
+Line-height: 1.5
+```
+
+### Navigation
+
+```text
+Font: Inter
+Size: 13px
+Weight: 500
+Text-transform: uppercase
+Letter-spacing: 0.12em
+```
+
+### Buttons
+
+```text
+Font: Inter
+Size: 13px
+Weight: 500
+Text-transform: uppercase
+Letter-spacing: 0.1em
+```
 
 ---
 
-## 6. Type Scale
-
-The exact values may evolve during implementation.
-
-Initial conceptual scale:
-
-```text
-Display
-Heading XL
-Heading L
-Heading M
-Heading S
-Body L
-Body
-Body S
-Caption
-```
-
-Typography should use responsive sizing where appropriate.
-
-Example:
-
-```text
-Hero title
-Mobile → smaller scale
-Desktop → larger scale
-```
-
----
-
-## 7. Spacing
+# 5. Spacing System
 
 Use a consistent spacing scale.
 
-Avoid arbitrary spacing values when an existing spacing value provides the same visual result.
-
-Conceptual scale:
-
 ```text
-xs
-sm
-md
-lg
-xl
-2xl
-3xl
-4xl
+4px
+8px
+12px
+16px
+24px
+32px
+40px
+48px
+64px
+80px
+96px
+120px
 ```
 
-Large spacing should be used between major page sections.
+## Section Spacing
+
+Desktop:
+
+```text
+120px vertical padding
+```
+
+Tablet:
+
+```text
+80px vertical padding
+```
+
+Mobile:
+
+```text
+60px vertical padding
+```
+
+## Content Width
+
+Maximum content width:
+
+```text
+1200px
+```
+
+Content should be centered horizontally.
+
+## Common Spacing
+
+Heading → content:
+
+```text
+48px
+```
+
+Paragraph → paragraph:
+
+```text
+24px
+```
+
+Gallery grid gap:
+
+```text
+40px
+```
 
 ---
 
-## 8. Containers
+# 6. Border Radius
 
-Public pages should use a centered content container.
+The website intentionally uses sharp edges.
 
-The container should:
+```text
+cards: 2px
+buttons: 0px
+images: 0px
+tags: 0px
+inputs: 0px
+```
 
-- Prevent excessively wide content
-- Maintain consistent horizontal padding
-- Adapt to screen size
+Avoid large rounded corners.
 
-Artwork galleries may intentionally use wider layouts than text-heavy sections.
+Do not use:
+
+```text
+rounded-xl
+rounded-2xl
+rounded-full
+```
+
+unless there is a specific design reason.
 
 ---
 
-## 9. Grid System
+# 7. Borders
 
-Artwork galleries should use responsive grids.
-
-Example:
+Default border:
 
 ```text
-Mobile
-1 column
-
-Tablet
-2 columns
-
-Desktop
-3 columns
-
-Large desktop
-3–4 columns
+1px solid #e8e4df
 ```
 
-The exact number of columns depends on artwork aspect ratio and visual composition.
+Strong border:
 
-Do not force every artwork into identical cropping if doing so damages the artwork presentation.
+```text
+1px solid #1a1a1a
+```
+
+Borders should be subtle and primarily used for:
+
+- Cards
+
+- Dividers
+
+- Form fields
+
+- Secondary buttons
+
+- Navigation separators
 
 ---
 
-## 10. Artwork Cards
+# 8. Shadows
 
-Artwork cards are one of the most important reusable components.
+The default design is intentionally flat.
 
-A card may contain:
-
-```text
-Image
-Title
-Category
-Price
-Status
-```
-
-Possible states:
+## Default
 
 ```text
-Available
-Sold
-Reserved
-Coming Soon
+box-shadow: none;
 ```
 
-Cards should remain visually simple.
+## Card Hover
 
-The artwork image should dominate the card.
+```text
+0 4px 24px rgba(26, 26, 26, 0.06)
+```
+
+## Image Hover
+
+```text
+0 8px 32px rgba(26, 26, 26, 0.08)
+```
+
+## Navigation on Scroll
+
+Use an extremely subtle separation:
+
+```text
+0 1px 0 rgba(26, 26, 26, 0.05)
+```
+
+Do not use heavy shadows.
 
 ---
 
-## 11. Artwork Images
+# 9. Background
 
-Images must preserve the artwork's visual integrity.
+Primary page background:
 
-Avoid aggressive cropping unless intentionally designed.
+```text
+#faf8f5
+```
 
-Preferred behavior:
+The background should resemble warm, high-quality art paper.
+
+## Paper Grain
+
+A very subtle paper grain/noise texture may be applied over the main background.
+
+Target opacity:
+
+```text
+2.5%
+```
+
+The texture must remain subtle enough that users barely notice it.
+
+It must never interfere with:
+
+- Text readability
+
+- Artwork
+
+- Accessibility
+
+- Performance
+
+No background gradients.
+
+---
+
+# 10. Navigation
+
+## Desktop
+
+The header is fixed at the top.
+
+Height:
+
+```text
+80px
+```
+
+Initially:
+
+```text
+background: transparent;
+```
+
+After scrolling:
+
+```text
+background: rgba(250, 248, 245, 0.95);
+backdrop-filter: blur(12px);
+```
+
+Navigation should gain only a very subtle bottom separation when scrolling.
+
+## Logo
+
+```text
+Font: Cormorant Garamond
+Size: 22px
+Letter-spacing: 0.15em
+Text-transform: uppercase
+```
+
+## Navigation Links
+
+```text
+Font: Inter
+Size: 13px
+Weight: 500
+Letter-spacing: 0.12em
+Text-transform: uppercase
+```
+
+Navigation links use an animated underline.
+
+The underline should:
+
+- Start from the left
+
+- Animate using transform
+
+- Use the Terracotta accent
+
+- Remain subtle
+
+## Mobile
+
+Desktop navigation collapses into a hamburger button.
+
+Opening the menu displays a full-screen navigation overlay.
+
+Mobile navigation links use:
+
+```text
+Cormorant Garamond
+Large editorial typography
+```
+
+Touch targets must be at least:
+
+```text
+48px
+```
+
+---
+
+# 11. Buttons
+
+## Primary Button
+
+```text
+Background: #c4705a
+Text: #ffffff
+Border-radius: 0px
+Font: Inter
+Size: 13px
+Weight: 500
+Letter-spacing: 0.1em
+Text-transform: uppercase
+```
+
+Hover:
+
+```text
+Background: #a85d48
+Transform: translateY(-1px)
+```
+
+## Secondary Button
+
+```text
+Background: transparent
+Text: #1a1a1a
+Border: 1px solid #1a1a1a
+Border-radius: 0px
+```
+
+Hover:
+
+```text
+Background: #1a1a1a
+Text: #ffffff
+```
+
+## Text Links
+
+Text links should use an underline.
+
+Underline offset:
+
+```text
+6px
+```
+
+Hover:
+
+```text
+color: #c4705a
+```
+
+---
+
+# 12. Cards
+
+Artwork cards should feel like gallery frames.
+
+## Default
+
+```text
+Background: #f5f1ec
+Border: 1px solid #e8e4df
+Border-radius: 2px
+Shadow: none
+```
+
+## Hover
+
+```text
+Shadow: 0 4px 24px rgba(26, 26, 26, 0.06)
+```
+
+Artwork image should scale slightly.
+
+```text
+scale: 1.03
+```
+
+The transition must remain subtle.
+
+---
+
+# 13. Gallery
+
+## Desktop
+
+Use a 3-column CSS grid.
+
+```text
+columns: 3
+gap: 40px
+```
+
+## Tablet
+
+```text
+columns: 2
+gap: 32px
+```
+
+## Mobile
+
+```text
+columns: 1
+gap: 24px
+```
+
+## Gallery Style
+
+The gallery should have an editorial, masonry-inspired appearance.
+
+Prefer a standard CSS grid with controlled offsets rather than a complex masonry implementation.
+
+Selected cards may have small vertical offsets to create visual rhythm.
+
+Do not sacrifice:
+
+- Accessibility
+
+- Responsive behavior
+
+- Performance
+
+- Maintainability
+
+for decorative masonry effects.
+
+## Artwork Card
+
+Each card may contain:
+
+1. Artwork image
+
+2. Artwork title
+
+3. Category
+
+4. Optional availability/status
+
+Artwork remains visually dominant.
+
+---
+
+# 14. Artwork Images
+
+## General
+
+Artwork must be shown as naturally as possible.
+
+Do not apply artistic filters to the artwork.
+
+Avoid:
+
+- Color filters
+
+- Heavy overlays
+
+- Excessive blur
+
+- Artificial effects
+
+## Gallery Images
+
+Gallery cards may use:
+
+```text
+object-fit: cover
+```
+
+when the composition allows it.
+
+Mixed aspect ratios are encouraged:
+
+```text
+4:5
+3:4
+1:1
+```
+
+## Artwork Detail Images
+
+The artwork detail page should prioritize showing the complete artwork.
+
+Use:
 
 ```text
 object-fit: contain
 ```
 
-or an appropriate image treatment based on the artwork.
+when cropping would remove important parts of the artwork.
 
-Images should support:
-
-- Lazy loading
-- Responsive sizing
-- Alt text
-- Multiple resolutions when available
+The image presentation should always respect the artwork itself.
 
 ---
 
-## 12. Buttons
+# 15. Image Animation
 
-Buttons should have clear hierarchy.
-
-### Primary
-
-Used for the most important action.
-
-Examples:
+Images may use a subtle entrance animation:
 
 ```text
-View Artwork
-Contact Artist
-Buy Artwork
-Request Commission
+opacity: 0 → 1
+scale: 1.02 → 1
 ```
 
-### Secondary
-
-Used for supporting actions.
-
-Examples:
+Gallery hover:
 
 ```text
-View Gallery
-Learn More
+scale: 1.03
 ```
 
-### Ghost / Text
-
-Used for low-priority actions.
-
-Examples:
+Duration:
 
 ```text
-View all
-Back
-Cancel
+600ms
 ```
 
-Buttons should have:
-
-- Clear labels
-- Comfortable touch targets
-- Consistent height
-- Consistent radius
-- Accessible contrast
+Do not over-animate artwork.
 
 ---
 
-## 13. Forms
+# 16. Homepage
 
-Forms should prioritize clarity.
+The homepage should establish the artist's identity immediately.
 
-Every form field should have:
+Recommended structure:
 
-- Label
-- Input
-- Validation state
-- Error message when needed
+1. Hero
 
-Avoid relying on placeholders as the only field label.
+2. Featured Works
+
+3. About Preview
+
+4. Contact CTA
+
+5. Footer
+
+## Hero
+
+The hero should be visually strong but restrained.
+
+Use a prominent artwork image or carefully selected artwork composition.
+
+The artist's name and short positioning statement should be immediately understandable.
+
+The hero should not feel like a generic marketing landing page.
 
 ---
 
-## 14. Navigation
+# 17. Gallery Page
 
-The public navigation should remain simple.
+The Gallery page is the primary artwork browsing experience.
 
-Potential navigation:
+Recommended structure:
+
+1. Page introduction
+
+2. Category filters
+
+3. Artwork grid
+
+Possible categories:
 
 ```text
-Home
-Gallery
-About
-Contact
+All
+Drawings
+Clay Figures
 ```
 
-A shop link may be introduced when commerce functionality exists.
+The categories should remain easy to expand later.
 
-The navigation should not become crowded as features are added.
-
----
-
-## 15. Header
-
-The header should visually support the artist identity.
-
-Possible elements:
+Active filter:
 
 ```text
-Artist Logo / Name
-Navigation
-Primary Action
-Mobile Menu
+Terracotta
 ```
 
-The exact layout will be decided during UI implementation.
+Filtering should feel instant and unobtrusive.
 
 ---
 
-## 16. Footer
+# 18. Artwork Detail Page
 
-The footer may contain:
+The artwork detail page should provide a focused viewing experience.
+
+## Hero Image
+
+Target height:
 
 ```text
-Artist name
-Short description
-Navigation
-Social links
-Contact
-Copyright
+approximately 70vh
 ```
 
-Avoid excessive footer content.
+However, the artwork should never be cropped merely to satisfy the height.
 
----
+If necessary, use a contained image presentation.
 
-## 17. Sections
+Avoid gradients because the global design language does not use background gradients.
 
-Major sections should follow a consistent structure:
+If text must appear over an image, use a minimal solid/semi-transparent overlay only where required for readability.
+
+## Information Layout
+
+Desktop:
 
 ```text
-Section
-├── Optional eyebrow
-├── Heading
-├── Optional description
-└── Content
+Left: 60%
+Right: 40%
 ```
 
-A reusable `SectionHeading` component may be used.
+Left side:
 
----
+- Artwork title
 
-## 18. Borders
+- Description
 
-Borders should be subtle.
+- Materials
 
-Use borders primarily for:
+- Dimensions
 
-- Cards
-- Inputs
-- Dividers
-- Navigation elements
-- Admin tables
+- Year
 
-Avoid excessive borders on the public website.
+- Additional information
 
----
+Right side:
 
-## 19. Border Radius
+- Price
 
-The final radius system will be selected during implementation.
+- Availability
 
-Use a small, consistent set rather than many unrelated values.
+- CTA
 
-Conceptual:
+- Optional inquiry information
+
+The sidebar may be sticky on desktop.
+
+Mobile:
 
 ```text
-Small
-Medium
-Large
-Full
+Single column
 ```
 
-Artwork presentation may intentionally use different visual treatment depending on the final design.
+## Related Works
+
+Use a 3-column grid on desktop.
+
+Mobile:
+
+```text
+1 column
+```
+
+## Previous / Next
+
+Provide navigation between artworks.
+
+Where appropriate, include artwork thumbnails.
 
 ---
 
-## 20. Shadows
+# 19. About Page
 
-Shadows should be subtle.
+The About page should feel personal and editorial.
 
-Avoid heavy default card shadows.
+Avoid the standard corporate "About Us" layout.
 
-The artwork itself should create most of the visual depth.
+Use:
+
+- Artist photography
+
+- Studio imagery
+
+- Editorial typography
+
+- Short personal story
+
+- Artistic philosophy
+
+- Selected process details
+
+The artist's personality should be visible without overwhelming the artwork.
 
 ---
 
-## 21. Animation
+# 20. Contact Page
 
-Animations should be restrained.
+The Contact page should remain simple.
 
-Good uses:
+Possible content:
 
-- Page transitions
-- Image reveals
-- Hover transitions
-- Navigation transitions
-- Modal transitions
-- Gallery interactions
+- Short invitation to get in touch
+
+- Contact form
+
+- Email
+
+- Social links
+
+- Commission/inquiry information
+
+Forms should use the same sharp-edged visual language.
+
+Inputs:
+
+```text
+border: 1px solid #e8e4df
+border-radius: 0px
+background: #ffffff
+```
+
+Focus states should remain accessible without introducing excessive visual effects.
+
+---
+
+# 21. Footer
+
+Footer background:
+
+```text
+#2d2d2d
+```
+
+Footer text:
+
+Keep the footer simple.
+
+Possible sections:
+
+- Artist name
+
+- Navigation
+
+- Contact
+
+- Social links
+
+- Copyright
+
+Do not overcrowd the footer.
+
+---
+
+# 22. Motion
+
+Motion should support the feeling of calm contemplation.
+
+## Global Transition
+
+```text
+400ms cubic-bezier(0.25, 0.1, 0.25, 1)
+```
+
+## Page Entrance
+
+Use subtle:
+
+```text
+opacity: 0 → 1
+transform: translateY(24px) → translateY(0)
+```
+
+Staggered animation may be used sparingly.
+
+## Scroll Reveal
+
+Sections may fade in when entering the viewport.
+
+Do not animate every element independently.
+
+## No Parallax
+
+Do not use parallax effects.
+
+## No Excessive Motion
 
 Avoid:
 
-- Excessive bouncing
-- Constant movement
-- Long animations
-- Animation that delays usability
+- Large transforms
 
-Animation should support the experience, not become the experience.
+- Fast bouncing
 
----
+- Continuous animations
 
-## 22. Motion Timing
+- Decorative motion
 
-Initial guidelines:
+- Excessive stagger delays
+
+## Reduced Motion
+
+Respect:
 
 ```text
-Fast
-~150ms
-
-Normal
-~250ms
-
-Slow
-~400ms
+prefers-reduced-motion
 ```
 
-Longer animations should only be used for intentional visual transitions.
+Users who request reduced motion should receive minimal or no non-essential animation.
 
 ---
 
-## 23. Accessibility
+# 23. Responsive Design
 
-The design system must support:
+The website must work well across:
 
-- Keyboard navigation
-- Visible focus states
-- Sufficient color contrast
-- Semantic HTML
-- Screen-reader-friendly labels
-- Accessible buttons
-- Accessible forms
-- Reduced-motion preferences
+- Desktop
 
-Accessibility must not be treated as an optional feature.
+- Laptop
+
+- Tablet
+
+- Mobile
+
+## Breakpoint Strategy
+
+Use Tailwind's standard responsive breakpoints unless a specific design requirement requires otherwise.
+
+The layout should adapt naturally rather than relying on excessive breakpoint-specific overrides.
+
+## Mobile
+
+Navigation:
+
+```text
+Hamburger
+→
+Full-screen navigation
+```
+
+Gallery:
+
+```text
+1 column
+```
+
+Artwork detail:
+
+```text
+Single column
+```
+
+Typography:
+
+```text
+H1: 40px
+H2: 32px
+```
+
+Section padding:
+
+```text
+60px
+```
+
+Minimum interactive touch target:
+
+```text
+48px
+```
 
 ---
 
-## 24. Responsive Behavior
+# 24. Accessibility
 
-Components should adapt rather than simply shrink.
+The visual design must not compromise accessibility.
+
+Requirements:
+
+- Maintain readable text contrast
+
+- Provide visible keyboard focus states
+
+- Use semantic HTML
+
+- Provide meaningful image alt text
+
+- Ensure interactive elements have adequate touch targets
+
+- Respect reduced-motion preferences
+
+- Do not rely only on color to communicate information
+
+- Forms must have accessible labels
+
+Artwork descriptions and metadata should remain readable even with the decorative paper texture.
+
+---
+
+# 25. Performance
+
+The artwork-heavy nature of the site makes image performance important.
+
+Use:
+
+- Responsive image sizes
+
+- Lazy loading for below-the-fold images
+
+- Optimized image formats where appropriate
+
+- Proper image dimensions
+
+- Minimal JavaScript for visual effects
+
+- CSS transitions where possible
+
+Do not load unnecessarily large artwork images when a smaller version is sufficient.
+
+The visual quality of artwork must remain high while keeping page performance reasonable.
+
+---
+
+# 26. SEO
+
+Each artwork should eventually have its own indexable page.
+
+Artwork pages should support:
+
+- Unique title
+
+- Description
+
+- Artwork metadata
+
+- Descriptive URLs
+
+- Image alt text
+
+- Open Graph metadata
+
+The artist's name and artistic identity should be clear to search engines.
+
+---
+
+# 27. Component Design Rules
+
+Components should be reusable and focused.
 
 Examples:
 
-### Navigation
-
 ```text
-Desktop → full navigation
-Mobile → compact navigation/menu
-```
-
-### Gallery
-
-```text
-Desktop → multi-column
-Mobile → single/two-column depending on artwork
-```
-
-### Typography
-
-```text
-Desktop → larger display typography
-Mobile → controlled scale
-```
-
-### Spacing
-
-```text
-Desktop → generous spacing
-Mobile → reduced but comfortable spacing
-```
-
----
-
-## 25. Dark Mode
-
-Dark mode is not required for the initial release.
-
-The architecture should not prevent adding it later.
-
-If added, all semantic colors should have dark-mode equivalents.
-
----
-
-## 26. Loading States
-
-Dynamic content should have appropriate loading states.
-
-Possible patterns:
-
-- Skeleton
-- Spinner
-- Progressive image loading
-- Placeholder
-
-Avoid unnecessary loading indicators for instant interactions.
-
----
-
-## 27. Empty States
-
-Empty states should clearly explain the situation.
-
-Examples:
-
-```text
-No artworks available.
-No artworks found.
-No commissions yet.
-```
-
-Where appropriate, provide a useful next action.
-
----
-
-## 28. Error States
-
-Errors should be:
-
-- Clear
-- Human-readable
-- Specific enough to be useful
-- Visually distinct
-
-Avoid exposing technical implementation details.
-
----
-
-## 29. Status Badges
-
-Artwork statuses should use a reusable status component.
-
-Example:
-
-```text
-Available
-Sold
-Reserved
-Coming Soon
-```
-
-The visual treatment should remain consistent across the website and admin dashboard.
-
----
-
-## 30. Icons
-
-Use one consistent icon system.
-
-Do not mix multiple unrelated icon libraries without a clear reason.
-
-Icons should support text rather than replace important labels.
-
----
-
-## 31. Images and Visual Content
-
-Real artwork should be used as early as possible during visual development.
-
-Placeholder images can be used temporarily, but final layout decisions should be validated using realistic artwork dimensions and aspect ratios.
-
----
-
-## 32. Component Rules
-
-A component should be extracted when:
-
-- It is reused
-- It has meaningful internal behavior
-- It represents a clear UI concept
-- Extraction improves readability
-
-Avoid:
-
-```text
-One-component-per-element
-```
-
-Prefer meaningful components such as:
-
-```text
+Header
+Footer
+Button
+SectionHeading
 ArtworkCard
 ArtworkGrid
-GalleryFilter
-SectionHeading
-SiteHeader
-SiteFooter
+ArtworkFilter
+ArtworkMeta
+ArtworkImage
+PageHero
+ContactForm
 ```
+
+Avoid creating abstractions before they are actually needed.
+
+Prefer simple, reusable components over deeply nested or overly generic component systems.
 
 ---
 
-## 33. Design Tokens
+# 28. Future Content Management
 
-Repeated design decisions should eventually be represented through centralized tokens.
+The current public website should be designed so that artwork content can later become database-driven.
 
-Examples:
+Artwork data should eventually support:
 
 ```text
-Colors
-Typography
-Spacing
-Radius
-Shadows
-Motion
+title
+slug
+description
+category
+images
+year
+materials
+dimensions
+price
+availability
+featured
+created_at
+updated_at
 ```
 
-This allows the entire visual identity to evolve without manually changing dozens of unrelated components.
+The visual design must not depend on hardcoded artwork names or fixed artwork counts.
+
+The gallery should support additional artworks without requiring layout redesign.
 
 ---
 
-## 34. Design Evolution
+# 29. Future Commerce
 
-The first visual implementation is not considered final.
+Commerce is planned for a later phase.
 
-The design should be tested through:
+Potential future functionality:
 
-1. Real artwork
-2. Mobile layout
-3. Desktop layout
-4. Accessibility
-5. Performance
-6. User flow
+- Cart
 
-Changes should be documented when they affect the overall design system.
+- Checkout
+
+- Orders
+
+- Payments
+
+- Inventory
+
+- Shipping
+
+- Commission requests
+
+The current design should leave room for these features without turning the website into a generic e-commerce store.
+
+Artwork presentation remains the priority.
 
 ---
 
-## 35. Core Design Rule
+# 30. Design Anti-Patterns
 
-> The website exists to present the artist and the artwork. The interface should make the artwork more compelling, not compete with it.
+Avoid the following:
+
+### Generic SaaS Design
+
+Do not use:
+
+- Large rounded cards
+
+- Dashboard-like layouts
+
+- Excessive pills
+
+- Generic SaaS gradients
+
+- Floating glass panels
+
+### Excessive Feminine Styling
+
+Do not rely on:
+
+- Pink palettes
+
+- Decorative hearts
+
+- Overly soft rounded UI
+
+- Cliché "feminine" visual language
+
+The design should feel artistic and sophisticated rather than stereotypically feminine.
+
+### Excessive Decoration
+
+Avoid:
+
+- Unnecessary icons
+
+- Decorative blobs
+
+- Excessive borders
+
+- Large background graphics
+
+- Random illustrations
+
+### Excessive Animation
+
+Avoid:
+
+- Parallax
+
+- Constant movement
+
+- Overly long transitions
+
+- Bouncy UI
+
+- Large entrance animations
+
+### E-commerce-first Presentation
+
+The website should not resemble:
+
+- Shopify templates
+
+- Product catalogs
+
+- Marketplace listings
+
+Selling should eventually be possible, but the artist and artwork remain the focus.
+
+---
+
+# 31. Design Tokens Summary
+
+```text
+PRIMARY BACKGROUND
+#faf8f5
+
+SECONDARY BACKGROUND
+#f5f1ec
+
+SURFACE
+#ffffff
+
+PRIMARY TEXT
+#1a1a1a
+
+SECONDARY TEXT
+#2d2d2d
+
+MUTED TEXT
+#b8b0a8
+
+PRIMARY ACCENT
+#c4705a
+
+PRIMARY ACCENT HOVER
+#a85d48
+
+SECONDARY ACCENT
+#8a9a7b
+
+TERTIARY ACCENT
+#d4a574
+
+BORDER
+#e8e4df
+
+DARK BACKGROUND
+#2d2d2d
+
+DISPLAY FONT
+Cormorant Garamond
+
+BODY FONT
+Inter
+
+MAX CONTENT WIDTH
+1200px
+
+DESKTOP SECTION PADDING
+120px
+
+TABLET SECTION PADDING
+80px
+
+MOBILE SECTION PADDING
+60px
+
+DESKTOP GALLERY GAP
+40px
+
+CARD RADIUS
+2px
+
+BUTTON RADIUS
+0px
+
+IMAGE RADIUS
+0px
+
+DEFAULT SHADOW
+none
+
+HOVER SHADOW
+0 4px 24px rgba(26, 26, 26, 0.06)
+
+TRANSITION
+400ms cubic-bezier(0.25, 0.1, 0.25, 1)
+```
+
+---
+
+# 32. Current Design Status
+
+**Phase 1 — Foundation:** Complete
+
+**Phase 2 — Design Direction:** Complete
+
+The visual direction is based on the Kimi AI Design prototype and has been reviewed and refined.
+
+The approved direction is:
+
+> **Gallery at Home — intimate museum quality combined with personal studio warmth.**
+
+Next implementation step:
+
+1. Install/configure the selected fonts.
+
+2. Configure the design tokens in Tailwind/CSS.
+
+3. Create the foundational UI components.
+
+4. Build the homepage according to this design system.
