@@ -1,16 +1,20 @@
 import { Head, Link } from '@inertiajs/react';
 import ArtworkCard from '@/components/site/ArtworkCard';
 import SectionHeading from '@/components/site/SectionHeading';
-import { artworks } from '@/data/artworks';
+import type { Artwork } from '@/types/artwork';
 
-export default function Welcome() {
+interface WelcomeProps {
+    artworks: Artwork[];
+}
+
+export default function Welcome({ artworks }: WelcomeProps) {
     return (
         <>
             <Head title="Artist Portfolio" />
             <main>
                 {/* Hero */}
                 <section className="pt-32 pb-20 md:pt-40 md:pb-24">
-                    <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-6 md:grid-cols-2 md:gap-16">
+                    <div className="mx-auto grid max-w-300 items-center gap-12 px-6 md:grid-cols-2 md:gap-16">
                         <div>
                             <p className="mb-6 font-sans text-[13px] tracking-[0.16em] text-terracotta uppercase">
                                 Artist · Sculptor
@@ -31,14 +35,14 @@ export default function Welcome() {
                             <div className="mt-10 flex flex-wrap gap-4">
                                 <Link
                                     href="/gallery"
-                                    className="inline-flex h-12 items-center bg-terracotta px-7 font-sans text-[13px] tracking-[0.1em] text-white uppercase transition-transform duration-300 hover:-translate-y-px"
+                                    className="inline-flex h-12 items-center bg-terracotta px-7 font-sans text-[13px] tracking-widest text-white uppercase transition-transform duration-300 hover:-translate-y-px"
                                 >
                                     Explore the Gallery
                                 </Link>
 
                                 <Link
                                     href="/about"
-                                    className="inline-flex h-12 items-center border border-ink px-7 font-sans text-[13px] tracking-[0.1em] uppercase transition-colors duration-300 hover:bg-ink hover:text-white"
+                                    className="inline-flex h-12 items-center border border-ink px-7 font-sans text-[13px] tracking-widest uppercase transition-colors duration-300 hover:bg-ink hover:text-white"
                                 >
                                     About the Artist
                                 </Link>
@@ -65,10 +69,18 @@ export default function Welcome() {
                 {/* Introduction */}
                 <section className="border-y border-stone bg-[#f5f1ec] py-24 md:py-30">
                     <div className="mx-auto max-w-300 px-6">
-                        <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
-                            <p className="font-sans text-[13px] tracking-[0.12em] text-terracotta uppercase">
-                                The Studio
-                            </p>
+                        <p className="font-sans text-[13px] tracking-[0.12em] text-terracotta uppercase">
+                            The Studio
+                        </p>
+
+                        <div className="mt-8 grid gap-12 md:grid-cols-[1fr_2fr]">
+                            <div className="overflow-hidden bg-stone">
+                                <img
+                                    src="/images/studio.png"
+                                    alt="The artist's studio"
+                                    className="h-auto w-full object-cover"
+                                />
+                            </div>
 
                             <div>
                                 <SectionHeading
@@ -111,7 +123,8 @@ export default function Welcome() {
                     <div className="mt-12 grid gap-8 md:grid-cols-3">
                         {artworks.slice(0, 3).map((artwork) => (
                             <ArtworkCard
-                                key={artwork.image}
+                                key={artwork.id}
+                                slug={artwork.slug}
                                 title={artwork.title}
                                 category={artwork.category}
                                 image={artwork.image}
@@ -121,15 +134,15 @@ export default function Welcome() {
 
                     <Link
                         href="/gallery"
-                        className="mt-10 inline-block border-b border-ink pb-1 font-sans text-[13px] tracking-[0.1em] uppercase md:hidden"
+                        className="mt-10 inline-block border-b border-ink pb-1 font-sans text-[13px] tracking-widest uppercase md:hidden"
                     >
                         View all works
                     </Link>
                 </section>
 
                 {/* Closing CTA */}
-                <section className="bg-ink px-6 py-24 text-ivory md:py-[120px]">
-                    <div className="mx-auto max-w-[1200px]">
+                <section className="bg-ink px-6 py-24 text-ivory md:py-30">
+                    <div className="mx-auto max-w-300">
                         <p className="mb-5 font-sans text-[13px] tracking-[0.12em] text-clay uppercase">
                             Get in touch
                         </p>
@@ -141,7 +154,7 @@ export default function Welcome() {
 
                             <Link
                                 href="/contact"
-                                className="inline-flex h-12 w-fit items-center bg-terracotta px-7 font-sans text-[13px] tracking-[0.1em] text-white uppercase"
+                                className="inline-flex h-12 w-fit items-center bg-terracotta px-7 font-sans text-[13px] tracking-widest text-white uppercase"
                             >
                                 Contact the Artist
                             </Link>

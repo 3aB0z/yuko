@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react';
 
 interface ArtworkCardProps {
+    slug: string;
     title: string;
     category: string;
     image: string;
@@ -9,10 +10,11 @@ interface ArtworkCardProps {
 }
 
 export default function ArtworkCard({
+    slug,
     title,
     category,
     image,
-    href = '/gallery',
+    href = `/artwork/${slug}`,
     aspect = 'aspect-[3/4]',
 }: ArtworkCardProps) {
     return (
@@ -28,7 +30,7 @@ export default function ArtworkCard({
             <div className="mt-4">
                 <h3 className="font-display text-2xl">{title}</h3>
 
-                <p className="mt-1 font-sans text-xs tracking-[0.1em] text-muted uppercase">
+                <p className="mt-1 font-sans text-xs tracking-widest text-muted uppercase">
                     {category}
                 </p>
             </div>

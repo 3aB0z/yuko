@@ -1,11 +1,15 @@
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 import ArtworkCard from '@/components/site/ArtworkCard';
-import { artworks } from '@/data/artworks';
+import type { Artwork } from '@/types/artwork';
+
+interface GalleryProps {
+    artworks: Artwork[];
+}
 
 type Filter = 'All' | 'Drawing' | 'Clay Sculpture';
 
-export default function Gallery() {
+export default function Gallery({ artworks }: GalleryProps) {
     const [filter, setFilter] = useState<Filter>('All');
 
     const filteredArtworks =
@@ -16,7 +20,7 @@ export default function Gallery() {
     return (
         <>
             <Head title="Gallery" />
-            <main className="mx-auto max-w-[1200px] px-6 pt-36 pb-24 md:pt-40 md:pb-[120px]">
+            <main className="mx-auto max-w-300 px-6 pt-36 pb-24 md:pt-40 md:pb-30">
                 {/* Page heading */}
                 <div className="max-w-3xl">
                     <p className="mb-5 font-sans text-[13px] tracking-[0.12em] text-terracotta uppercase">
@@ -41,7 +45,7 @@ export default function Gallery() {
                                 key={option}
                                 type="button"
                                 onClick={() => setFilter(option)}
-                                className={`pb-1 font-sans text-[13px] tracking-[0.1em] uppercase transition-colors duration-300 ${
+                                className={`pb-1 font-sans text-[13px] tracking-widest uppercase transition-colors duration-300 ${
                                     filter === option
                                         ? 'border-b border-terracotta text-terracotta'
                                         : 'text-muted hover:text-ink'
@@ -57,7 +61,8 @@ export default function Gallery() {
                 <div className="mt-12 grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
                     {filteredArtworks.map((artwork) => (
                         <ArtworkCard
-                            key={artwork.image}
+                            key={artwork.id}
+                            slug={artwork.slug}
                             title={artwork.title}
                             category={artwork.category}
                             image={artwork.image}
