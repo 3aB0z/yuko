@@ -15,7 +15,7 @@ export default function Gallery({ artworks }: GalleryProps) {
     const filteredArtworks =
         filter === 'All'
             ? artworks
-            : artworks.filter((artwork) => artwork.category === filter);
+            : artworks.filter((artwork) => artwork.category.name === filter);
 
     return (
         <>
@@ -64,7 +64,7 @@ export default function Gallery({ artworks }: GalleryProps) {
                             key={artwork.id}
                             slug={artwork.slug}
                             title={artwork.title}
-                            category={artwork.category}
+                            category={artwork.category.name}
                             image={artwork.image}
                         />
                     ))}

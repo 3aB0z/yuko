@@ -1,17 +1,19 @@
 import { useForm } from '@inertiajs/react';
 import { useState } from 'react';
-import type { Artwork } from '@/types/artwork';
+import type { AdminArtwork } from '@/types/artwork';
+import type { Category } from '@/types/category';
 
 interface Props {
-    artwork: Artwork;
+    artwork: AdminArtwork;
+    categories: Category[];
 }
 
-export default function Edit({ artwork }: Props) {
+export default function Edit({ artwork, categories }: Props) {
     const form = useForm({
         _method: 'put' as const,
         slug: artwork.slug,
         title: artwork.title,
-        category: artwork.category,
+        category_id: artwork.category_id,
         image: null as File | null,
         description: artwork.description,
         artwork_date: artwork.artwork_date,
@@ -74,17 +76,17 @@ export default function Edit({ artwork }: Props) {
                     </label>
 
                     <select
-                        value={form.data.category}
+                        value={form.data.category_id}
                         onChange={(e) =>
-                            form.setData(
-                                'category',
-                                e.target.value as Artwork['category'],
-                            )
+                            form.setData('category_id', Number(e.target.value))
                         }
                         className="mt-2 w-full rounded-md border px-3 py-2"
                     >
-                        <option value="Drawing">Drawing</option>
-                        <option value="Clay Sculpture">Clay Sculpture</option>
+                        {categories.map((category) => (
+                            <option key={category.id} value={category.id}>
+                                {category.name}
+                            </option>
+                        ))}
                     </select>
                 </div>
 

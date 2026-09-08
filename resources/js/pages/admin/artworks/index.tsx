@@ -42,7 +42,7 @@ export default function Index({ artworks }: Props) {
                                     </h2>
                                 </Link>
                                 <p className="text-sm text-gray-500">
-                                    {artwork.category}
+                                    {artwork.category.name}
                                 </p>
                             </div>
                         </div>

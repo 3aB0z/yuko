@@ -126,7 +126,7 @@ export default function Welcome({ artworks }: WelcomeProps) {
                                 key={artwork.id}
                                 slug={artwork.slug}
                                 title={artwork.title}
-                                category={artwork.category}
+                                category={artwork.category.name}
                                 image={artwork.image}
                             />
                         ))}

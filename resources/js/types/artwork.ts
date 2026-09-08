@@ -1,10 +1,10 @@
-export type ArtworkCategory = 'Drawing' | 'Clay Sculpture';
+import type { Category } from '@/types/category';
 
 export interface Artwork {
     id: number;
     slug: string;
     title: string;
-    category: ArtworkCategory;
+    category: Category;
     image: string;
     description: string;
     artwork_date: string;
@@ -12,4 +12,10 @@ export interface Artwork {
     completed_at?: string;
     duration?: string;
     price?: number;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface AdminArtwork extends Omit<Artwork, 'category'> {
+    category_id: number;
 }

@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Category;
 
 class Artwork extends Model
 {
     protected $fillable = [
         'slug',
         'title',
-        'category',
+        'category_id',
         'image',
         'description',
         'artwork_date',
@@ -25,4 +27,9 @@ class Artwork extends Model
         'completed_at' => 'date',
         'price' => 'decimal:2',
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

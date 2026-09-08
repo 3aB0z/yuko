@@ -31,7 +31,7 @@ export default function Artwork({ artwork }: ArtworkProps) {
 
                     <div>
                         <p className="font-sans text-[13px] tracking-[0.12em] text-terracotta uppercase">
-                            {artwork.category}
+                            {artwork.category.name}
                         </p>
 
                         <h1 className="mt-3 font-display text-5xl leading-none font-light md:text-[64px]">
