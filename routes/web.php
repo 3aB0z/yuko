@@ -11,7 +11,16 @@ Route::inertia('/contact', 'contact')->name('contact');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware('admin')->group(function () {
-        Route::inertia('dashboard', 'dashboard')->name('dashboard');
+        Route::get('dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])
+            ->name('dashboard');
+
+        Route::get('api/admin/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'data'])
+            ->name('api.admin.dashboard');
+
+        Route::get('/api/admin/artworks', [
+            \App\Http\Controllers\Admin\ArtworkController::class,
+            'data',
+        ])->name('api.admin.artworks');
 
         Route::get('/admin/artworks', [\App\Http\Controllers\Admin\ArtworkController::class, 'index'])
             ->name('admin.artworks.index');
@@ -30,6 +39,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::delete('/admin/artworks/{artwork:slug}', [\App\Http\Controllers\Admin\ArtworkController::class, 'destroy'])
             ->name('admin.artworks.destroy');
+
+        Route::get('/admin/categories', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])
+            ->name('admin.categories.index');
+
+        Route::get('/admin/categories/create', [\App\Http\Controllers\Admin\CategoryController::class, 'create'])
+            ->name('admin.categories.create');
+
+        Route::post('/admin/categories', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])
+            ->name('admin.categories.store');
+
+        Route::get('/admin/categories/{category:slug}/edit', [\App\Http\Controllers\Admin\CategoryController::class, 'edit'])
+            ->name('admin.categories.edit');
+
+        Route::put('/admin/categories/{category:slug}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])
+            ->name('admin.categories.update');
+
+        Route::delete('/admin/categories/{category:slug}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])
+            ->name('admin.categories.destroy');
     });
 });
 

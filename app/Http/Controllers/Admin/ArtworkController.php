@@ -12,7 +12,8 @@ use Inertia\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ArtworkController extends Controller
 {
@@ -21,10 +22,55 @@ class ArtworkController extends Controller
         Gate::authorize('viewAny', Artwork::class);
 
         return Inertia::render('admin/artworks/index', [
-            'artworks' => Artwork::with('category')
-                ->orderBy('artwork_date', 'desc')
-                ->get(),
+            'categories' => Category::orderBy('name')->get(),
         ]);
+    }
+
+    public function data(Request $request): JsonResponse
+    {
+        Gate::authorize('viewAny', Artwork::class);
+
+        $query = Artwork::with('category');
+
+        if ($request->filled('search')) {
+            $search = $request->string('search')->toString();
+
+            $query->where(function ($query) use ($search) {
+                $query
+                    ->where('title', 'like', "%{$search}%")
+                    ->orWhere('slug', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->integer('category_id'));
+        }
+
+        $sort = $request->input('sort', 'artwork_date');
+        $direction = $request->input('direction', 'desc');
+
+        $allowedSorts = [
+            'title',
+            'artwork_date',
+            'created_at',
+        ];
+
+        if (! in_array($sort, $allowedSorts, true)) {
+            $sort = 'artwork_date';
+        }
+
+        if (! in_array($direction, ['asc', 'desc'], true)) {
+            $direction = 'desc';
+        }
+
+        $artworks = $query
+            ->orderBy($sort, $direction)
+            ->paginate(
+                min(max($request->integer('per_page', 20), 1), 100)
+            )
+            ->withQueryString();
+
+        return response()->json($artworks);
     }
 
     public function create(): Response
